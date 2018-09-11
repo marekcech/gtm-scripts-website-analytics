@@ -1,0 +1,18 @@
+<script>
+ if ("connection" in navigator){ //check connection available
+ //The downlink attribute represents the effective bandwidth estimate in megabits per second, rounded to nearest multiple of 25 kilobits per second, and is based on recently observed application layer throughput across recently active connections
+   // mbps
+   // http://wicg.github.io/netinfo/#-dfn-rtt-dfn-attribute
+   // https://caniuse.com/#feat=netinfo
+ var connection=navigator.connection.downlink;
+   //slow-2g is the 66.6th percentile of 2G observations, 2g is the 50th percentile of 2G observations, 3g is the 50th percentile of 3G observations, 4G
+   // slow-2g, 2g, 3g, 4g
+  var effective=navigator.connection.effectiveType;
+   //The rtt attribute represents the effective round-trip time estimate in milliseconds, rounded to nearest multiple of 25 milliseconds, and is based on recently observed application-layer RTT measurements across recently active connections
+   //miliseconds
+ var rtt=navigator.connection.rtt;
+ //console.log("" \nConnection : "+connection+" \nEffective :"+ effective);
+
+ dataLayer.push({'event':'myConnection','connection':connection,'rtt':rtt,'effective':effective})
+ };
+</script>
